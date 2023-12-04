@@ -1,0 +1,23 @@
+{% extends 'appWebTemplates/baseWeb.html' %}
+{% load static %}
+
+{% block contenido %}
+<div class="container" id="productos-container">
+    <div class="row mt-5">
+        <div class="col">
+            <h2>Formulario de Producción</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.producto.label_tag }}
+                {{ form.producto }}
+                {{ form.producto.errors }}       
+                {{ form.cantidadProducto.label_tag }}
+                {{ form.cantidadProducto }}
+                {{ form.cantidadProducto.errors }}
+                <button type="submit" name="agregar_mas" value="False" class="btn btn-success mt-2">Finalizar</button>
+                <button type="submit" name="agregar_mas" value="True" class="btn btn-primary mt-2">Agregar Más</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock contenido %}

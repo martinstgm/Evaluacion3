@@ -1,0 +1,36 @@
+{% extends "appWebTemplates/baseWeb.html" %}
+
+
+{% load static %}
+
+{% block contenido %}
+<div class="container-fluid">
+    <div class="col-lg-12">
+        <div id="graficoCircularSexo"></div>
+    </div>
+</div>
+<script>
+    Highcharts.chart('graficoCircularSexo', {
+        chart: {
+            type: 'pie'
+        },
+        title: {
+            text: 'Distribución de Entrevistados por Sexo'
+        },
+        series: [{
+            name: 'Cantidad',
+            colorByPoint: true,
+            data: [{
+                name: 'Masculino',
+                y: {{ datos.Masculino|default:0 }}
+            }, {
+                name: 'Femenino',
+                y: {{ datos.Femenino|default:0 }}
+            }, {
+                name: 'Otro',
+                y: {{ datos.Otro|default:0 }}
+            }]
+        }]
+    });
+</script>
+{% endblock contenido %}

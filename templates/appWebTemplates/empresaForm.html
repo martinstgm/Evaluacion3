@@ -1,0 +1,49 @@
+{% extends 'appWebTemplates/baseWeb.html' %}
+
+{% load static %}
+
+{% block contenido %}
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col">
+                <h2>Formulario datos personales</h2>
+                    <div class="row">
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="row">
+                                {{ form.non_field_errors }}
+                                <div class="col-3 mb-3">
+                                    <label for="rutEmpresa">Rut Empresa</label>
+                                    {{ form.rutEmpresa }}
+                                    {{ form.rutEmpresa.errors }}
+                                </div>
+                                <div class="col-3 mb-3">
+                                    <label for="nombreEmpresa">Nombre Empresa</label>
+                                    {{ form.nombreEmpresa }}
+                                    {{ form.nombreEmpresa.errors }}
+                                </div>
+                                <div class="col-3 mb-3">
+                                    <label for="representanteLegal">Nombre Representante</label>
+                                    {{ form.representanteLegal }}
+                                    {{ form.representanteLegal.errors }}
+                                </div>
+                                <div class="col-3 mb-3">
+                                    <label for="rutRepresentante">Rut Representante</label>
+                                    {{ form.rutRepresentante }}
+                                    {{ form.rutRepresentante.errors }}
+                                </div>
+                                <div class="col-3 mb-3">
+                                    {{ form.direccion.label_tag }}
+                                    {{ form.direccion }}
+                                    {{ form.direccion.errors }}
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between mt-3">
+                                <button type="submit" class="btn btn-success">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+            </div>
+        </div>
+    </div>
+{% endblock contenido %}

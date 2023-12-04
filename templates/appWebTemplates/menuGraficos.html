@@ -1,0 +1,27 @@
+{% extends 'appWebTemplates/baseWeb.html' %}
+
+{% load static %}
+
+{% block contenido %}
+  <section>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 text-center m-2">
+                <a href="{% url 'graficoProdProv' %}" class="btn btn-primary">
+                    <h2>Grafico 1</h2>
+                </a>
+            </div>
+            <div class="col-md-8 text-center m-2">
+                <a href="{% url 'graficoVSInformal' %}" class="btn btn-primary">
+                    <h2>Grafico 2</h2>
+                </a>
+            </div>
+            <div class="col-md-8 text-center m-2">
+                <a href="{% url 'graficoVSSexo' %}" class="btn btn-primary">
+                    <h2>Grafico 3</h2>
+                </a>
+            </div>
+        </div>
+    </div>
+  </section>
+{% endblock contenido %}

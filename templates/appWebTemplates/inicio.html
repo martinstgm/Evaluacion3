@@ -1,0 +1,73 @@
+{% extends 'appWebTemplates/baseWeb.html' %}
+{% load static %}
+{% block contenido %}
+<section>
+    <div class="container mt-5">
+        {% if user.tipoUsuario == "a" %}
+            <h2 class="text-center mb-5">Menu principal Analista</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="{% static 'images/dashboard.png' %}" class="card-img-top p-5" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title">Graficos</h5>
+                            <p class="card-text">Aquí podrás visualizar las estadísticas creadas a partir de las
+                                encuestas realizadas</p>
+                            <a href="{% url 'dashboard' %}" class="btn btn-primary">Dashboards</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% elif user.tipoUsuario == "e" %}
+        <h2 class="text-center mb-5">Menu principal Entrevistador</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{% static 'images/user config.png' %}" class="card-img-top" alt="Imagen 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Encuestar</h5>
+                        <p class="card-text">Aqui puedes completar los formularios para registrar datos</p>
+                        <a href="{% url 'personalesForm' %}" class="btn btn-primary">Cuentas</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{% static 'images/dashboard.png' %}" class="card-img-top p-5" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">Historial de encuestados</h5>
+                        <p class="card-text">Aqui puedes revisar los trabajadores que entrevistaste</p>
+                        <a href="{% url 'entrevistados' %}" class="btn btn-primary">Historial Encuestados</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <h2 class="text-center mb-5">Menu principal Administrador</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{% static 'images/user config.png' %}" class="card-img-top" alt="Imagen 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Administración de cuentas</h5>
+                        <p class="card-text">Aquí podrás visualizar el detalle de las cuentas que tienen acceso a la plataforma</p>
+                        <a href="{% url 'usuarios' %}" class="btn btn-primary">Cuentas</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{% static 'images/dashboard.png' %}" class="card-img-top p-5" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">Graficos</h5>
+                        <p class="card-text">Aquí podrás visualizar las estadísticas creadas a partir de las
+                            encuestas realizadas</p>
+                        <a href="{% url 'dashboard' %}" class="btn btn-primary">Dashboards</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock contenido %}

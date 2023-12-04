@@ -1,0 +1,44 @@
+{% extends 'appWebTemplates/baseWeb.html' %}
+
+{% load static %}
+
+{% block contenido %}
+<div class="container-fluid">
+    <div class="col-lg-12">
+        <div id="container" style="width: 600px; height: 400px;">
+        </div>
+    </div>
+</div>
+
+<script>
+    console.log(data)
+    // Extrae los datos de Django y los formatea para Highcharts
+    var data = [
+        {% for item in data %}
+            { name: "{{ item.0 }}", y: {{ item.1|floatformat:-2 }} },
+        {% endfor %}
+    ];
+
+    // Configura el gráfico de barras con Highcharts
+    Highcharts.chart('container', {
+        chart: {
+            type: 'bar'
+        },
+        title: {
+            text: 'Producción por Provincia'
+        },
+        xAxis: {
+            categories: data.map(item => item.name)
+        },
+        yAxis: {
+            title: {
+                text: 'Total de Producción'
+            }
+        },
+        series: [{
+            name: 'Provincia',
+            data: data.map(item => item.y)
+        }]
+    });
+</script>
+{% endblock contenido %}

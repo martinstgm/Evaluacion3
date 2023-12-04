@@ -1,0 +1,27 @@
+{% extends "appWebTemplates/baseWeb.html" %}
+{% block menu %}
+  
+{% endblock menu %}
+{% block contenido %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+<div class="row mt-5">
+    <div class="car col-4 offset-4 shadow-lg">
+        <div class="card-body">
+            <h5 class="card-title text-primary text-center m-3">Inicio de Sesion</h3>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <div class="d-flex justify-content-end m-3">
+                    <input class="btn btn-secondary" type="reset" value="Cancelar">&nbsp;
+                    <input class="btn btn-dark" type="submit" value="Ingresar">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock contenido %}

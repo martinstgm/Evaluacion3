@@ -1,0 +1,36 @@
+{% extends "appWebTemplates/baseWeb.html" %}
+
+
+{% load static %}
+
+{% block contenido %}
+<div class="container-fluid">
+    <div class="col-lg-12">
+        <div id="graficoCircularDepIndep"></div>
+    </div>
+</div>
+
+<script>
+    Highcharts.chart('graficoCircularDepIndep', {
+        chart: {
+            type: 'pie'
+        },
+        title: {
+            text: 'Trabajadores Independientes V/S Dependientes'
+        },
+        series: [{
+            name: 'Cantidad',
+            colorByPoint: true,
+            data: [{
+                name: 'Independiente',
+                y: {{ datos.independientes|default:0 }}
+            }, {
+                name: 'Dependiente',
+                sliced: true,
+                selected: true,
+                y: {{ datos.dependientes|default:0 }}
+            }]
+        }]
+    });
+</script>
+{% endblock contenido %}

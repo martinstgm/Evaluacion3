@@ -1,0 +1,34 @@
+{% extends 'appWebTemplates/baseWeb.html' %}
+
+{% load static %}
+
+{% block contenido %}
+
+<div class="container mt-4">
+  <h2 class="text-center">Historial de entrevistados</h2>
+  <table class="table table-bordered">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">RUT</th>
+        <th scope="col">Nombres</th>
+        <th scope="col">Apellidos</th>
+        <th scope="col">Accion</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for entrevistado in entrevistados %}
+        <tr>
+          <td>{{ entrevistado.rutEntrevistado }}</td>
+          <td>{{ entrevistado.pNombreEntrevistado }}</td>
+          <td>{{ entrevistado.pApellidoEntrevistado }} {{ entrevistado.sApellidoEntrevistado }}</td>
+          <td>{{ entrevistado.tipoTrabajo }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-between mt-3">
+    <a href="{% url 'menu' %}"><button type="button" class="btn btn-secondary">Volver</button></a>
+  </div>
+</div>
+
+{% endblock contenido %}

@@ -1,0 +1,62 @@
+{% extends 'appWebTemplates/baseWeb.html' %}
+
+{% load static %}
+
+{% block contenido %}
+
+<div class="container mt-4">
+  <table class="table table-bordered">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">RUT</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido</th>
+        <th scope="col">Tipo de Usuario</th>
+        <th scope="col">Acción</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for usuario in usuarios %}
+        <tr>
+          <td>{{ usuario.rutUsuario }}</td>
+          <td>{{ usuario.first_name }}</td>
+          <td>{{ usuario.last_name }}</td>
+          <td>{{ usuario.tipoUsuario }}</td>
+          <td>
+            <button type="button" class="btn btn-danger eliminar-usuario-btn" data-usuario-id="{{ usuario.userID }}">Eliminar</button>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-between mt-3">
+    <a href="{% url 'menu' %}"><button type="button" class="btn btn-secondary">Volver</button></a>
+    <a href="{% url 'userAdd' %}"><button type="button" class="btn btn-primary">Agregar Usuarios</button></a>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.eliminar-usuario-btn').forEach(function (button) {
+      button.addEventListener('click', function () {
+        const usuarioID = this.getAttribute('data-usuario-id');
+        Swal.fire({
+          title: '¿Estás seguro?',
+          text: '¡No podrás revertir esto!',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Sí, eliminarlo'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.href = `/eliminar_usuario/${usuarioID}/`;
+          }
+        });
+      });
+    });
+  });
+</script>
+
+{% endblock contenido %}

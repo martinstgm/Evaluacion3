@@ -1,0 +1,87 @@
+{% extends 'appWebTemplates/baseWeb.html' %}
+
+{% load static %}
+
+{% block contenido %}
+<div class="container">
+    <div class="row mt-5">
+        <div class="col">
+            <h2>Formulario datos personales</h2>
+                <div class="row">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                            {{ form.non_field_errors }}
+                            <div class="col-3 mb-3">
+                                <label for="pNombreEntrevistado">Nombre</label>
+                                
+                                {{ form.pNombreEntrevistado }}
+                                {{ form.pNombreEntrevistado.errors }}
+                            </div>
+                            <div class="col-3 mb-3">
+                                <label for="sNombreEntrevistado">Segundo Nombre</label>
+                                
+                                {{ form.sNombreEntrevistado }}
+                                {{ form.sNombreEntrevistado.errors }}
+                            </div>
+                            <div class="col-3 mb-3">
+                                <label for="pApellidoEntrevistado">Apellido</label>
+                                
+                                {{ form.pApellidoEntrevistado }}
+                                {{ form.pApellidoEntrevistado.errors }}
+                            </div>
+                            <div class="col-3 mb-3">
+                                <label for="sApellidoEntrevistado">Segundo Apellido</label>
+                                
+                                {{ form.sApellidoEntrevistado }}
+                                {{ form.sApellidoEntrevistado.errors }}
+                            </div>
+                            <div class="col-3 mb-3">
+                                <label for="rutEntrevistado">Rut</label>
+                                
+                                {{ form.rutEntrevistado }}
+                                {{ form.rutEntrevistado.errors }}
+                            </div>
+                            <div class="col-3 mb-3">
+                                <label for="fechaNacimiento">Fecha de nacimiento</label>
+                                
+                                {{ form.fechaNacimiento }}
+                                {{ form.fechaNacimiento.errors }}
+                            </div>
+                            <div class="col-3 mb-3">
+                                {{ form.sexo.label_tag }}
+                                {{ form.sexo }}
+                                {{ form.sexo.errors }}
+                            </div>
+                            <div class="col-3 mb-3">
+                                {{ form.ciudad.label_tag }}
+                                {{ form.ciudad }}
+                                {{ form.ciudad.errors }}
+                            </div>
+                            <div class="col-3 mb-3">
+                                <label for="tipoTrabajo">Seleccione tipo de trabajo</label>
+                                
+                                {{ form.tipoTrabajo }}
+                                {{ form.tipoTrabajo.errors }}
+                            </div>
+                            <div class="col-3 mb-3">
+                                {{ form.contacto.label_tag }}
+                                {{ form.contacto }}
+                                {{ form.contacto.errors }}
+                            </div>
+                            <div class="col-3 mb-3">
+                                <label for="direccionEntrevistado">Direccion</label>
+                                {{ form.direccionEntrevistado }}
+                                {{ form.direccionEntrevistado.errors }}
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between mt-3">
+                            <a href="{% url 'menu' %}"><button type="button" class="btn btn-secondary">Volver</button></a>
+                            <button type="submit" class="btn btn-success">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+        </div>
+    </div>
+</div>
+{% endblock contenido %}
